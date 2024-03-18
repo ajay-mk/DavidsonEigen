@@ -1,6 +1,6 @@
  # Specify the minimum version for CMake
 
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 3.11.0)
 
 # Project's name
 project(davidson_eigensolver)
@@ -10,6 +10,7 @@ include(CheckIncludeFile)
 include(CheckIncludeFileCXX)
 include(CheckIncludeFiles)
 include(ExternalProject)
+include(FetchContent)
 
 
 set( CMAKE_VERBOSE_MAKEFILE on )

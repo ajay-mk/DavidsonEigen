@@ -8,7 +8,6 @@ add_executable(main ${SOURCES})
 
 
 # Add compiler flags
-set(CXXOPTS "/home/nicolas/Documents/projects/cxxopts-2.1.1/")
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -fopenmp -DEIGEN_USE_BLAS -DMKL_LP64 -m64 -I${CXXOPTS}/include")
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -fopenmp -DMKL_LP64 -m64 -I${CXXOPTS}/include")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -fopenmp"  )

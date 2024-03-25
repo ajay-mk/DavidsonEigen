@@ -1,6 +1,6 @@
  # Specify the minimum version for CMake
 
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 3.11.0)
 
 # Project's name
 project(davidson_eigensolver)
@@ -10,6 +10,7 @@ include(CheckIncludeFile)
 include(CheckIncludeFileCXX)
 include(CheckIncludeFiles)
 include(ExternalProject)
+include(FetchContent)
 
 
 set( CMAKE_VERBOSE_MAKEFILE on )
@@ -59,8 +60,18 @@ find_package (Eigen3 REQUIRED NO_MODULE)
 include_directories(${EIGEN3_INCLUDE_DIR})
 message(STATUS "EIGEN Include: " ${EIGEN3_INCLUDE_DIR})
 
-#search for cxxopts
-find_package(cxxopts REQUIRED)
+# Declare the cxxopts dependency
+FetchContent_Declare(
+       cxxopts
+       GIT_REPOSITORY https://github.com/jarro2783/cxxopts.git
+       GIT_TAG master
+)
+FetchContent_GetProperties(cxxopts)
+if(NOT cxxopts_POPULATED)
+ FetchContent_Populate(cxxopts)
+ add_subdirectory(${cxxopts_SOURCE_DIR} ${cxxopts_BINARY_DIR} EXCLUDE_FROM_ALL)
+endif()
+include_directories(${cxxopts_SOURCE_DIR}/include)
 
 # search boost
 find_package(Boost 1.57.0 REQUIRED COMPONENTS program_options filesystem system timer unit_test_framework)

@@ -1,4 +1,4 @@
-name: CI
+name: Ubuntu CI
 
 on:
   push:
@@ -9,27 +9,19 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest # xenial equivalent
+    name: "Ubuntu latest: g++"
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Setup environment
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y cmake libblas-dev liblapack-dev libeigen3-dev libboost-all-dev
-        wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
-        chmod +x miniconda.sh
-        ./miniconda.sh -b
-        export PATH=$HOME/miniconda2/bin:$PATH
-        conda update --yes conda
+      - name: Setup environment
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake libblas-dev liblapack-dev libeigen3-dev libboost-all-dev
 
-    - name: Install dependencies
-      run: |
-        conda install --yes -c conda-forge cxxopts
-
-    - name: Build and Test
-      run: |
-        cmake -H. -B build
-        cmake --build build
-        ./bin/test_davidson
+      - name: Build and Test
+        run: |
+          cmake -H. -B build
+          cmake --build build
+          ./bin/test_davidson

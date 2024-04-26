@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/NLESC-JCER/DavidsonEigen.svg?branch=master)](https://travis-ci.org/NLESC-JCER/DavidsonEigen)
+[![Ubuntu CI](https://github.com/ajay-mk/DavidsonEigen/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/ajay-mk/DavidsonEigen/actions/workflows/ci.yml)
 
 DavidsonEigen
 ===================
